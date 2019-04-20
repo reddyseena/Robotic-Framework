@@ -1,0 +1,127 @@
+*Need Python, Pip
+Download from python.org and download 
+Change/add the Environmental variables in system variables.
+To know the version of python 
+Python -v
+Pip -v
+
+
+Install Robot Framework :
+Pip install robotframework
+Pip install robotframework-seleniumlibrary
+Pip install robotframework-requests which has dependency on python requests library
+For other libraries visit :   pypi.python.org for other library options
+Robotframework.org/#libraries   
+Install Webdrivers from selenium.org
+Install pycharm ide and plugin
+Go to jetbrains.com
+Click tools> pycharm
+Download & install community edition(free)
+Install pycharm
+Open file > settings dialog
+Click on plugins
+Search and install intellibot (patched for selenium library)
+Restart  pycharm
+
+	• Editors Options :
+IDE - Pycharm, Eclipse, Brackets, sublime Text.
+Text Editors : Emacs, Vim, Notepad ++
+RIDE
+
+	• Script Formats :
+TSV(.robot)
+HTML(RIDE)
+Pipe delimited
+
+	• Keyword-driven
+	• Natural Language(Business)
+Folder Structure :
+	1. Resources 2. Results  3.Tests 4.External Libraries
+Overview or Architecture :
+Inside integration development Environment we create a script file which is a text file with the extension .robot and the .robot files will refer the workflow  files and on the top of the script file we will attach one or more libraries like 
+	• Robot Framework = Overview script Layders::
+Script(.robot)
+Selenium2 Library
+Selenium Webdriver
+	• Sections of the script file : sections which we have to write in .robot file ::
+1.settings
+2.Variables
+3.Test cases
+4.Keywords(optional)
+ Example :  Amazon.robot
+*** Settings ***
+*** Variables *** 
+*** Test Cases ***
+*** Keywords ***
+
+If I want a keywords/resources then I will go to robotframework.org and I will click on the Test libraries External and we will find the libraries we want and suppose if we click on the selenium2 library and we should find the Keyword Documentation and click on it and we will find the keywords arguments.
+
+	l Run the Scripts and Examine Results :
+1.command line-Driven
+2.Pycharm IDE 
+3.Windows command line 
+	l How to Run
+1.Open command line 
+2.CD to your base dir
+3.robot my-script.robot  
+Robot -d results Amazon.robot
+
+	l Results :
+Pass -d some/path to specify where results go
+
+Example Script :::: Amazon.robot
+*** Settings ***
+Documentation This is the basic info for the suite
+Library  Selenium2Library
+*** Variables ***
+*** Test cases ***
+User should be required to sign in when checking out
+	[Documentation]  This is some basic information about the test
+	[Tags]  Smoke
+	Open Browser http://www.amazon.com  ie
+	Sleep  3s
+	Close Browser  
+	
+	
+	Pycharm IDE ::::
+	1.Open a Project 
+	2.View > Tools Windows > Terminal Menu Item
+	3.Execute Pybot command :
+	Pybot -d results tests/my-script.robot
+	Pybot -d results --include smoke tests/my-script.robot
+	Pybot -d c:\development\results -i- smoke tests/my-script.robot
+	
+	CMD Interface :
+	Cd c:\development\tests\
+	Pybot -d results -v BROWSER:ie amazon.robot
+	
+	Running from a Batch File :::
+	1.Create a text file
+	2.Add commands in text file
+@echo off 
+Cd c:\development\robot-scripts\amazon
+Call pybot -d results tests/my-script.robot
+Call pybot -d results --include smoke tests/my-script.robot
+Call pybot -d c:\development\results -I smoke tests/my-script.robot
+
+	3.save file
+	4.change .txt extension to .bat 
+	5.double click the bat file to execute
+	
+	Jenkins :
+Login to Jenkins
+Click a button
+Most complex to configure 
+	1.   Tests in git repo
+	2. Install Jenkins + RF Plugin
+	3. Create jobs
+Saucelabs ::
+https://app.saucelabs.com/login
+	
+	
+SeleniumLibrary :  selenium library is a web testing library for robot framework.
+Robot Framework :  if I want to hold manual testing and continue with automation testing then the robot framework is a correct one. It uses some python convention in scripts and we should write few resources/keywords in *.robot file when we run robot/pybot -d results *.robot then it looks for a specified file and executes the resources which we are declared in the script.
+
+Robot script file has a format and it's look like 4 sections ::  1. Settings 2.Variables 3.Test cases 4.Keywords
+
+*
